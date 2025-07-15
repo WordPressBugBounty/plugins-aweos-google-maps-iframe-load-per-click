@@ -10,7 +10,7 @@
  * Plugin Name: AWEOS Google Maps iframe Load per Click
  * Plugin URI:  -
  * Description: Google Maps can't be used directly anymore, this plugin asks for the users permission. It should work automatically.
- * Version:     1.9.3
+ * Version:     1.9.4
  * Author:      AWEOS GmbH
  * Author URI:  https://aweos.de
  * Text Domain: aweos-google-maps-privacy-domain
@@ -19,6 +19,12 @@
 
 Google Maps can't be used directly anymore, this plugin asks for the users permission.
 This plugin helps with the GDPR for your website.
+
+Changelog:
+= 1.9.4 =
+* Fix: PHP 8+ deprecation warnings behoben
+* Compatibility: PHP 8.4 Support hinzugefügt  
+* Update: Zend DOM Library PHP 8+ kompatibel gemacht
 
 */
 

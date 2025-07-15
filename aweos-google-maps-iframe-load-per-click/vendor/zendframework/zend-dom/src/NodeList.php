@@ -124,11 +124,9 @@ class NodeList implements Iterator, Countable, ArrayAccess
      *
      * @return DOMNode
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->position = 0;
-
-        return $this->nodeList->item(0);
     }
 
     /**
@@ -136,7 +134,7 @@ class NodeList implements Iterator, Countable, ArrayAccess
      *
      * @return bool
      */
-    public function valid()
+    public function valid(): bool
     {
         if (in_array($this->position, range(0, $this->nodeList->length - 1)) && $this->nodeList->length > 0) {
             return true;
@@ -150,7 +148,7 @@ class NodeList implements Iterator, Countable, ArrayAccess
      *
      * @return DOMNode
      */
-    public function current()
+    public function current(): mixed
     {
         return $this->nodeList->item($this->position);
     }
@@ -160,7 +158,7 @@ class NodeList implements Iterator, Countable, ArrayAccess
      *
      * @return int
      */
-    public function key()
+    public function key(): mixed
     {
         return $this->position;
     }
@@ -170,11 +168,9 @@ class NodeList implements Iterator, Countable, ArrayAccess
      *
      * @return DOMNode
      */
-    public function next()
+    public function next(): void
     {
         ++$this->position;
-
-        return $this->nodeList->item($this->position);
     }
 
     /**
@@ -182,7 +178,7 @@ class NodeList implements Iterator, Countable, ArrayAccess
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return $this->nodeList->length;
     }
@@ -193,9 +189,9 @@ class NodeList implements Iterator, Countable, ArrayAccess
      * @param int $key
      * @return bool
      */
-    public function offsetExists($key)
+    public function offsetExists(mixed $offset): bool
     {
-        if (in_array($key, range(0, $this->nodeList->length - 1)) && $this->nodeList->length > 0) {
+        if (in_array($offset, range(0, $this->nodeList->length - 1)) && $this->nodeList->length > 0) {
             return true;
         }
         return false;
@@ -207,9 +203,9 @@ class NodeList implements Iterator, Countable, ArrayAccess
      * @param int $key
      * @return mixed
      */
-    public function offsetGet($key)
+    public function offsetGet(mixed $offset): mixed
     {
-        return $this->nodeList->item($key);
+        return $this->nodeList->item($offset);
     }
 
     /**
@@ -219,7 +215,7 @@ class NodeList implements Iterator, Countable, ArrayAccess
      * @param  mixed $value
      * @throws Exception\BadMethodCallException when attempting to write to a read-only item
      */
-    public function offsetSet($key, $value)
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         throw new Exception\BadMethodCallException('Attempting to write to a read-only list');
     }
@@ -230,7 +226,7 @@ class NodeList implements Iterator, Countable, ArrayAccess
      * @param  mixed $key
      * @throws Exception\BadMethodCallException when attempting to unset a read-only item
      */
-    public function offsetUnset($key)
+    public function offsetUnset(mixed $offset): void
     {
         throw new Exception\BadMethodCallException('Attempting to unset on a read-only list');
     }
